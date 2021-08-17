@@ -2,6 +2,8 @@ from telebot import types
 
 TOKEN = '1930787466:AAERwu1bGmJXd2jkgTwrjTDBK0kLUD6SW0s'
 
+GROUP_ID = -513132131
+
 
 class Keyboard(object):
     main_key = types.InlineKeyboardMarkup()

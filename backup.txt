@@ -1,0 +1,16 @@
+обж /\/ not defined
+ин яз /\/ not defined
+алгебра /\/ not defined
+физика /\/ not defined
+экономика /\/ not defined
+право /\/ not defined
+практикум /\/ not defined
+химия /\/ not defined
+литература /\/ not defined
+русский /\/ not defined
+физкультура /\/ not defined
+информатика /\/ not defined
+обществознание /\/ not defined
+география /\/ not defined
+геометрия /\/ not defined
+история /\/ not defined
