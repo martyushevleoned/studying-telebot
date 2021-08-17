@@ -40,7 +40,7 @@ class Info(object):
                 'not defined'),
 
         Subject('литература',
-                ['[1]_15:00', '[2]_16:00', '[5]_14_00'],
+                ['[1]_15:00', '[2]_16:00', '[5]_14:00'],
                 'not defined'),
 
         Subject('русский',
@@ -52,7 +52,7 @@ class Info(object):
                 'not defined'),
 
         Subject('информатика',
-                ['[2]_13_00', '[4]_11:00', '[4]_12:00', '[5]_12:00'],
+                ['[2]_13:00', '[4]_11:00', '[4]_12:00', '[5]_12:00'],
                 'not defined'),
 
         Subject('обществознание',
@@ -76,19 +76,19 @@ class Info(object):
     def get_homework(cls, date, hw):
 
         if date == 0:
-            answer = 'Понедельник' + '\n'
+            answer = '<b>Понедельник</b>' + '\n'
         elif date == 1:
-            answer = 'Вторник' + '\n'
+            answer = '<b>Вторник</b>' + '\n'
         elif date == 2:
-            answer = 'Среда' + '\n'
+            answer = '<b>Среда</b>' + '\n'
         elif date == 3:
-            answer = 'Четверг' + '\n'
+            answer = '<b>Четверг</b>' + '\n'
         elif date == 4:
-            answer = 'Пятница' + '\n'
+            answer = '<b>Пятница</b>' + '\n'
         elif date == 5:
-            answer = 'Суббота' + '\n'
+            answer = '<b>Суббота</b>' + '\n'
         else:
-            answer = 'Воскресенье' + '\n'
+            answer = '<b>Воскресенье</b>' + '\n'
 
         mas = []
 

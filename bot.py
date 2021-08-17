@@ -30,28 +30,32 @@ def handler_call(call):
                 chat_id=call.message.chat.id,
                 message_id=call.message.message_id,
                 text=Info.get_homework(i, True),
-                reply_markup=config.Keyboard.back_key)
+                reply_markup=config.Keyboard.back_key,
+                parse_mode='html')
 
     if call.data == 'day_key':
         bot.edit_message_text(
             chat_id=call.message.chat.id,
             message_id=call.message.message_id,
             text='выберите день',
-            reply_markup=config.Keyboard.day_key)
+            reply_markup=config.Keyboard.day_key,
+            parse_mode='html')
 
     if call.data == 'get_schedule':
         bot.edit_message_text(
             chat_id=call.message.chat.id,
             message_id=call.message.message_id,
             text=Info.get_schedule(),
-            reply_markup=config.Keyboard.back_key)
+            reply_markup=config.Keyboard.back_key,
+            parse_mode='html')
 
     if call.data == 'back':
         bot.edit_message_text(
             chat_id=call.message.chat.id,
             message_id=call.message.message_id,
             text='меню',
-            reply_markup=config.Keyboard.main_key)
+            reply_markup=config.Keyboard.main_key,
+            parse_mode='html')
 
 
 bot.polling(none_stop=True)
