@@ -19,7 +19,7 @@ def send_text(m):
             bot.send_message(m.chat.id, 'дз успешно изменено')
 
     else:
-        bot.send_message(m.chat.id, 'меню', reply_markup=config.Keyboard.main_key)
+        bot.send_message(m.chat.id, 'меню', reply_markup=config.Keyboard.main_key, parse_mode='html')
 
 
 @bot.callback_query_handler(func=lambda call: True)
