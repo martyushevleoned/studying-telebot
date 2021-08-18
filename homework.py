@@ -36,7 +36,7 @@ class Info(object):
                 'not defined'),
 
         Subject('химия',
-                ['[2]_14:00'],
+                ['[1]_14:00'],
                 'not defined'),
 
         Subject('литература',
