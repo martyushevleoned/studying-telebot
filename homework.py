@@ -6,86 +6,22 @@ class Subject(object):
 
 
 class Info(object):
-    subjects = [
-        Subject('обж',
-                ['[0]_11:00'],
-                'not defined'),
-
-        Subject('ин яз',
-                ['[0]_12:00', '[2]_13:00', '[5]_11:00'],
-                'not defined'),
-
-        Subject('алгебра',
-                ['[0]_13:00', '[0]_14:00', '[4]_13:00', '[4]_14:00'],
-                'not defined'),
-
-        Subject('физика',
-                ['[0]_15:00', '[1]_13:00', '[2]_11:00', '[3]_14:00'],
-                'not defined'),
-
-        Subject('экономика',
-                ['[0]_16:00'],
-                'not defined'),
-
-        Subject('право',
-                ['[0]_17:00'],
-                'not defined'),
-
-        Subject('практикум',
-                ['[1]_11:00', '[1]_12:00'],
-                'not defined'),
-
-        Subject('химия',
-                ['[1]_14:00'],
-                'not defined'),
-
-        Subject('литература',
-                ['[1]_15:00', '[2]_16:00', '[5]_14:00'],
-                'not defined'),
-
-        Subject('русский',
-                ['[1]_16:00', '[2]_14:00', '[2]_15:00', '[2]_17:00'],
-                'not defined'),
-
-        Subject('физкультура',
-                ['[1]_17:00', '[3]_11:00'],
-                'not defined'),
-
-        Subject('информатика',
-                ['[2]_12:00', '[4]_11:00', '[4]_12:00', '[5]_12:00'],
-                'not defined'),
-
-        Subject('обществознание',
-                ['[3]_12:00', '[3]_13:00'],
-                'not defined'),
-
-        Subject('география',
-                ['[3]_15:00'],
-                'not defined'),
-
-        Subject('геометрия',
-                ['[3]_16:00', '[3]_17:00'],
-                'not defined'),
-
-        Subject('история',
-                ['[4]_15:00', '[5]_13:00'],
-                'not defined')
-    ]
+    subjects = []
 
     @classmethod
     def get_homework(cls, date, hw):
 
-        if date == 0:
+        if date == 1:
             answer = '<b>Понедельник</b>' + '\n'
-        elif date == 1:
-            answer = '<b>Вторник</b>' + '\n'
         elif date == 2:
-            answer = '<b>Среда</b>' + '\n'
+            answer = '<b>Вторник</b>' + '\n'
         elif date == 3:
-            answer = '<b>Четверг</b>' + '\n'
+            answer = '<b>Среда</b>' + '\n'
         elif date == 4:
-            answer = '<b>Пятница</b>' + '\n'
+            answer = '<b>Четверг</b>' + '\n'
         elif date == 5:
+            answer = '<b>Пятница</b>' + '\n'
+        elif date == 6:
             answer = '<b>Суббота</b>' + '\n'
         else:
             answer = '<b>Воскресенье</b>' + '\n'
@@ -113,13 +49,15 @@ class Info(object):
 
         answer = ''
 
-        for i in range(7):
+        for i in range(1, 8):
             answer += cls.get_homework(i, False) + '\n\n'
 
         return answer
 
+    # Homework
+
     @classmethod
-    def set_homework(cls, text):
+    def set_hw(cls, text):
         for i in cls.subjects:
             if i.name + ' /\/ ' in text:
                 i.homework = text.replace(i.name + ' /\/ ', '').replace('\n', ' <-> ')
@@ -127,14 +65,46 @@ class Info(object):
         return False
 
     @classmethod
-    def backup(cls):
-        with open('backup.txt', 'w') as f:
+    def upload_hw(cls):
+        with open('hw.txt', 'w') as f:
             for i in cls.subjects:
                 f.write(i.name + ' /\/ ' + i.homework + '\n')
 
     @classmethod
-    def upload_hw_from_file(cls):
-        with open('backup.txt', 'r') as f:
+    def download_hw(cls):
+        with open('hw.txt', 'r') as f:
             hw = f.readlines()
             for i in hw:
-                cls.set_homework(i.replace('\n', ''))
+                cls.set_hw(i.replace('\n', ''))
+
+    # Schedule
+
+    @classmethod
+    def set_schedule(cls, text):
+        with open('schedule.txt', 'w') as f:
+            f.write(text)
+
+    @classmethod
+    def upload_schedule(cls):
+        with open('schedule.txt', 'w') as f:
+            for i in cls.subjects:
+                f.write('Subject(\'' + i.name + '\', [')
+
+                for j in range(len(i.date)):
+                    f.write('\'' + i.date[j] + '\'')
+
+                    if j != len(i.date) - 1:
+                        f.write(', ')
+                    else:
+                        f.write('], \'')
+
+                f.write(i.homework + '\')\n')
+
+    @classmethod
+    def download_schedule(cls):
+        Info.subjects = []
+        with open('schedule.txt', 'r') as f:
+            mas = f.readlines()
+
+            for i in range(len(mas)):
+                Info.subjects.append(eval(mas[i]))
