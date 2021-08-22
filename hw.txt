@@ -12,3 +12,5 @@
 информатика /\/ not defined
 обществознание /\/ not defined
 география /\/ not defined
+геометрия /\/ not defined
+история /\/ not defined

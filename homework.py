@@ -82,7 +82,7 @@ class Info(object):
     @classmethod
     def set_schedule(cls, text):
         with open('schedule.txt', 'w') as f:
-            f.write(text)
+            f.write(text + '\n')
 
     @classmethod
     def upload_schedule(cls):
@@ -96,9 +96,7 @@ class Info(object):
                     if j != len(i.date) - 1:
                         f.write(', ')
                     else:
-                        f.write('], \'')
-
-                f.write(i.homework + '\')\n')
+                        f.write('], \'not defined\')\n')
 
     @classmethod
     def download_schedule(cls):
@@ -106,5 +104,5 @@ class Info(object):
         with open('schedule.txt', 'r') as f:
             mas = f.readlines()
 
-            for i in range(len(mas)):
-                Info.subjects.append(eval(mas[i]))
+            for i in mas:
+                Info.subjects.append(eval(i))
