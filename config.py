@@ -1,8 +1,8 @@
 from telebot import types
 
-TOKEN = '1930787466:AAERwu1bGmJXd2jkgTwrjTDBK0kLUD6SW0s'
+TOKEN = ''
 
-GROUP_ID = -513132131
+GROUP_ID = 0
 
 
 class Keyboard(object):
